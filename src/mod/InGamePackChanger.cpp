@@ -1,5 +1,7 @@
 #include "mod/InGamePackChanger.hpp"
 
+static bool enabled = false;
+
 namespace alvinqid {
 
 InGamePackChanger& InGamePackChanger::getInstance() {
@@ -10,7 +12,7 @@ InGamePackChanger& InGamePackChanger::getInstance() {
 //SettingsScreenController
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    SettingsScreenControllerCtor1,
     HookPriority::Normal,
     SettingsScreenController,
     &SettingsScreenController::$ctor,
@@ -31,7 +33,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 }
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    SettingsScreenControllerCtor2,
     HookPriority::Normal,
     SettingsScreenController,
     &SettingsScreenController::$ctor,
@@ -53,7 +55,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 }
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    SettingsScreenControllerCtor3,
     HookPriority::Normal,
     SettingsScreenController,
     &SettingsScreenController::$ctor,
@@ -75,7 +77,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 }
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    SettingsScreenControllerCtor4,
     HookPriority::Normal,
     SettingsScreenController,
     &SettingsScreenController::$ctor,
@@ -98,7 +100,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 }
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    SettingsScreenControllerCtor5,
     HookPriority::Normal,
     SettingsScreenController,
     &SettingsScreenController::$ctor,
@@ -123,7 +125,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 
 //GeneralSettingsScreenController
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    SettingsScreenControllerCtor,
+    GeneralSettingsScreenControllerCtor,
     HookPriority::Normal,
     GeneralSettingsScreenController,
     &GeneralSettingsScreenController::$ctor,

@@ -38,7 +38,6 @@ public:
 
 private:
     ll::mod::NativeMod& mSelf;
-    bool enabled = false;
 };
 
 } // namespace alvinqid
