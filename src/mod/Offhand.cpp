@@ -4,12 +4,19 @@
 #include "ll/api/mod/RegisterHelper.h"
 #include "mc/world/item/VanillaItems.h"
 #include "mc/world/item/registry/ItemRegistryRef.h"
-#include "mc/world/item/registry/ItemRegistry.h"
+//#include "mc/world/item/registry/ItemRegistry.h"
 #include "mc/world/item/Item.h"
+#include "mc/common/WeakPtr.h"
+#include <memory>
 
 class Experiments;
 namespace cereal { struct ReflectionCtx; };
 class BaseGameVersion;
+
+class ItemRegistry {
+public:
+    std::unordered_map<int, WeakPtr<Item>> mIdToItemMap;
+};
 
 namespace alvinqid_offhand {
 
