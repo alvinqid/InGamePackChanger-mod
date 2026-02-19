@@ -8,7 +8,7 @@
 #include "mc/world/item/Item.h"
 
 class Experiments;
-namespace cereal { struct ReflectionCtx; }
+namespace cereal { struct ReflectionCtx; };
 class BaseGameVersion;
 
 namespace alvinqid_offhand {
@@ -19,7 +19,7 @@ Offhand& Offhand::getInstance() {
 }
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
-    VanillaItems_registerItemsHook,
+    registerItemsHook,
     HookPriority::Normal,
     VanillaItems,
     &VanillaItems::registerItems,
