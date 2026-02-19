@@ -32,13 +32,14 @@ LL_AUTO_TYPE_STATIC_HOOK(
     origin(ctx, itemRegistryRef, baseGameVersion, experiments);
     
     auto registry = itemRegistryRef._lockRegistry();
-    if (!registry) return;
-    ItemRegistry* abc = registry.get();
-    ItemRegistry ajd = *abc;
+    if (!registry) return;    
     
-    for (auto& pair : ajd.mIdToItemMap)
+    for (auto const& pair : itemRegistryRef.getNameToItemMap())
     {
-        pair.second.get()->setAllowOffhand(true);
+        if (auto item = pair.second.get())
+        {
+            item->setAllowOffhand(true);
+        }
     }
 }
 
