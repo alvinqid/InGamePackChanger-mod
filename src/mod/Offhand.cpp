@@ -29,11 +29,15 @@ LL_AUTO_TYPE_STATIC_HOOK(
     BaseGameVersion const& baseGameVersion,
     Experiments const& experiments
 ) {
-    ItemRegistry* reg = itemRegistryRef._lockRegistry.get();
-    ItemRegistry itemRegistry = *reg;
-    for (auto& pair : itemRegistry.mIdToItemMap)
+    auto registry = itemRegistryRef._lockRegistry();
+    if (!registry) return;
+    
+    for (auto const& pair : itemRegistryRef.getNameToItemMap())
     {
-        pair.second.get()->setAllowOffhand(true);
+        if (auto item = pair.second.get())
+        {
+            item->setAllowOffhand(true);
+        }
     }
     
     origin(ctx, itemRegistryRef, baseGameVersion, experiments);
