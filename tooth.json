@@ -1,11 +1,11 @@
 {
   "format_version": 3,
-  "format_uuid": "f7fb2a2a-7e3f-4014-baa7-a0b8062292bb",
-  "tooth": "github.com/alvinqid/waila-mod",
+  "format_uuid": "8f4e3d2c-65a1-4f8b-9c5d-1a2b3c4d5e6f",
+  "tooth": "github.com/alvinqid/InGamePackChanger-mod",
   "version": "1.0.0",
   "info": {
-    "name": "waila",
-    "description": "What am I looking at",
+    "name": "InGamePackChanger",
+    "description": "Change Your Resource Packs In Game, As in the java edition",
     "tags": [
       "platform:levilamina",
       "type:mod"
@@ -27,8 +27,8 @@
           "placements": [
             {
               "type": "dir",
-              "src": "waila/",
-              "dest": "mods/waila/"
+              "src": "InGamePackChanger/",
+              "dest": "mods/InGamePackChanger/"
             }
           ]
         }
