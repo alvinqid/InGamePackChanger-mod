@@ -18,7 +18,7 @@ Offhand& Offhand::getInstance() {
     return instance;
 }
 
-LL_AUTO_TYPE_INSTANCE_HOOK(
+LL_AUTO_TYPE_STATIC_HOOK(
     registerItemsHook,
     HookPriority::Normal,
     VanillaItems,
@@ -29,7 +29,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
     BaseGameVersion const& baseGameVersion,
     Experiments const& experiments
 ) {
-    ItemRegistry* reg = itemRegistryRef.mWeakRegistry.lock().get();
+    ItemRegistry* reg = itemRegistryRef._lockRegistry.get();
     ItemRegistry itemRegistry = *reg;
     for (auto& pair : itemRegistry.mIdToItemMap)
     {
