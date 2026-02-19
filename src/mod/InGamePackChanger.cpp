@@ -10,7 +10,6 @@ InGamePackChanger& InGamePackChanger::getInstance() {
 }
 
 //SettingsScreenController
-
 LL_AUTO_TYPE_INSTANCE_HOOK(
     SettingsScreenControllerCtor1,
     HookPriority::Normal,
