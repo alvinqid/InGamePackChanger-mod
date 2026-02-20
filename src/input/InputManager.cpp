@@ -4,29 +4,6 @@ Amethyst::InputManager::InputManager(Options *opts) {
     mOptions = opts;
 }
 
-Amethyst::InputManager::~InputManager() {
-    Options* opt = mOptions;
-
-    // Remove registered keys.
-    for (auto& action : mCustomInputs) {
-        for (auto& mapping : opt->mKeyboardRemappings) {
-            auto newEnd = std::remove_if(
-                mapping->mKeymappings.begin(),
-                mapping->mKeymappings.end(),
-                [&action](const Keymapping& keymapping)
-            {
-                    return keymapping.mAction == std::string("key." + action.mActionName);
-            });
-
-            // Erase the removed elements from the vector.
-            mapping->mKeymappings.erase(newEnd, mapping->mKeymappings.end());
-        }
-    }
-
-    mCustomInputs.clear();
-    mActions.clear();
-}
-
 Amethyst::InputAction& Amethyst::InputManager::RegisterNewInput(const std::string& actionName, std::vector<int> defaultKeys, bool allowRemapping, KeybindContext context)
 {
     //Assert(context != KeybindContext::None, "Cannot register a keybind with context None");
