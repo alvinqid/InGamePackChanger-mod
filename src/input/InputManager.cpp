@@ -94,16 +94,16 @@ void InputManager::_registerKeyboardInputs(VanillaClientInputMappingFactory* inp
         std::string keyName = "key." + input.mActionName;
         std::string buttonName = "button." + input.mActionName;
         //inputs->createKeyboardAndMouseBinding(keyboard, mouse, &buttonName, &keyName);
-        Keymapping& mapping = *alvinqid::Zoom::getInstance().getProperty().keyboardLayout->getKeymappingByAction(*keyName);
+        Keymapping mapping = *alvinqid::Zoom::getInstance().getProperty().keyboardLayout->getKeymappingByAction(keyName);
 
     	for(int key : mapping.mKeys) {
     		if (!mapping.isAssigned()) continue;
     
             if (mapping.isAltKey()) {
-                mouse->buttonBindings.emplace_back(buttonName, key);
+                mouse->buttonBindings.get().emplace_back(buttonName, key);
     		}
             else {
-                keyboard->keyBindings.emplace_back(buttonName, key, FocusImpact::Neutral);
+                keyboard->keyBindings.get().emplace_back(buttonName, key, FocusImpact::Neutral);
             }
     	}
     }
