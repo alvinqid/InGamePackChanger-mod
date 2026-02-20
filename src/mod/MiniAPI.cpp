@@ -56,13 +56,13 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
     VanillaClientInputMappingFactory,
     &VanillaClientInputMappingFactory::$createInputMappingTemplates,
     void,
-    IOptions* opts
+    IOptions& opts
 ) {
     origin(opts);
 
     auto* inputMgr = MiniAPIMOD::getInstance().getInputManager();
     if (inputMgr) {
-        EventInput(inputMgr);
+        EventInput(*inputMgr);
     }
 }
 
