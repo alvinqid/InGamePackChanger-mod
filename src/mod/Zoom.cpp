@@ -40,6 +40,11 @@ namespace alvinqid {
         return currentSensitivity;
     }
     
+    Zoom& Zoom::getInstance() {
+        static Zoom instance;
+        return instance;
+    }
+    
     bool Zoom::load() {
         getSelf().getLogger().debug("Loading...");
         return true;
