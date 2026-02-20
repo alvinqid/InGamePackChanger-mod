@@ -4,6 +4,12 @@
 #include "ll/api/mod/NativeMod.h"
 #include "ll/api/mod/RegisterHelper.h"
 #include "ll/api/memory/Hook.h"
+#include "mod/Property.hpp"
+#include "mc/client/input/VanillaClientInputMappingFactory.h"
+#include "mc/client/game/ClientInstance.h"
+#include "mc/deps/input/InputHandler.h"
+
+#include "input/InputManager.hpp"
 
 namespace alvinqid {
 
@@ -11,6 +17,8 @@ namespace alvinqid {
     
     public:
         static Zoom& getInstance();
+        Property& getProperty();
+        InputManager& getInputManager() const { return mInputManager };
     
         Zoom() : mSelf(*ll::mod::NativeMod::current()) {};
     
@@ -22,5 +30,6 @@ namespace alvinqid {
         
     private:
         ll::mod::NativeMod& mSelf;
+        InputManager mInputManager;
     };
 } // namespace alvinqid
