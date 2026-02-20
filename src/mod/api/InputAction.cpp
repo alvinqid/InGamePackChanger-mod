@@ -1,4 +1,4 @@
-#include "mod/InputAction.hpp"
+#include "mod/api/InputAction.hpp"
 
 class ClientInstance;
 

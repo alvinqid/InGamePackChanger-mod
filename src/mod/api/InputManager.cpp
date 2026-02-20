@@ -1,13 +1,15 @@
-#include "mod/InputManager.hpp"
+#include "mod/api/InputManager.hpp"
+#include "mc/client/input/KeyboardRemappingLayout.h"
+#include "mc/deps/input/ButtonEventData.h"
 
-InputManager::InputManager(Options* opts, RemappedLayout* rpl)
-    : mOptions(opts), mLayout(rpl)
+InputManager::InputManager(alvinqid::Zoom* zoom)
+    : mMod(zoom)
 {
 }
 
 InputAction& InputManager::registerNewInput(
     const std::string& actionName,
-    std::vector<int> defaultKeys,
+    std::vector<int> const& defaultKeys,
     bool allowRemapping,
     KeybindContext context)
 {
@@ -16,9 +18,10 @@ InputAction& InputManager::registerNewInput(
     if (auto it = mActions.find(hash); it != mActions.end())
         return *it->second;
 
-    auto& layout = mOptions->getCurrentKeyboardRemapping();
+    auto layout = mMod->getInstance().getOptions()->getCurrentKeyboardRemapping();
 
-    Keymapping keymapping("key." + actionName, defaultKeys, allowRemapping);
+    Keymapping keymapping("key." + actionName, defaultKeys);
+    keymapping->mAllowRemap = allowRemapping;
     layout->mKeymappings.emplace_back(keymapping);
     layout->mDefaultMappings.emplace_back(keymapping);
 
@@ -74,7 +77,7 @@ void InputManager::createKeyboardAndMouseBinding(
     const std::string* keyName,
     FocusImpact impact)
 {
-    Keymapping& mapping = *mLayout->getKeymappingByAction(*keyName);
+    Keymapping& mapping = *mMod->getInstance().getRemappingLayout()->getKeymappingByAction(*keyName);
 
     if (!mapping.isAssigned())
         return;
