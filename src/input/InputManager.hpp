@@ -4,6 +4,8 @@
 #include <utility>
 #include <map>
 
+#include "mod/MiniAPI.hpp"
+
 #include "input/InputAction.hpp"
 #include "mc/client/game/ClientInstance.h"
 #include "mc/client/game/IClientInstance.h"
@@ -21,7 +23,7 @@ public:
     Options* mOptions;
     RemappingLayout* mLayout;
     
-    InputManager(Options* opts, RemappingLayout* rl);
+    InputManager(Options* opts);
     InputManager(const InputManager&) = delete;
     InputManager(InputManager&&) = delete;
     InputManager& operator=(const InputManager&) = delete;

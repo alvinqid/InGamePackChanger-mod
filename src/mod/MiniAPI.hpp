@@ -25,6 +25,10 @@ public:
 
     ClientInstance* clientInstance;
     RemappingLayout* rmpl;
+    
+    ClientInstance* getClientInstance() const { return clientInstance; }
+    
+    RemappingLayout* getRMPL() const { return rmpl; }
 
     static MiniAPI& getInstance();
 

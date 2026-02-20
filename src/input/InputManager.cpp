@@ -1,8 +1,7 @@
 #include "input/InputManager.hpp"
 
-Amethyst::InputManager::InputManager(Options *opts, RemappingLayout rl) {
+Amethyst::InputManager::InputManager(Options *opts) {
     mOptions = opts;
-    mLayout = rl;
 }
 
 Amethyst::InputManager::~InputManager() {
@@ -84,7 +83,7 @@ Amethyst::InputPassthrough Amethyst::InputManager::_handleButtonEvent(InputHandl
 }
 
 void Amethyst::InputManager::createKeyboardAndMouseBinding(KeyboardInputMapping* keyboard, MouseInputMapping* mouse, const std::string* buttonName, const std::string* keyName, FocusImpact impact) {
-    Keymapping& mapping = *mLayout->getKeymappingByAction(*keyName);
+    Keymapping& mapping = *alvinqid::MiniAPI::getInstance().getRMPL()->getKeymappingByAction(*keyName);
 
 	for(int key : mapping.mKeys) {
 		//key = mLayout->getAdjustedKey(key);
