@@ -2,7 +2,7 @@
 
 class ClientInstance;
 
-static int32_t StringToNameId(const std::string& str)
+int32_t StringToNameId(const std::string& str)
 {
     int32_t hash = -2128831035;
 
@@ -42,7 +42,7 @@ InputPassthrough InputAction::_onButtonStateChange(
 
     for (const auto& handler : handlers)
     {
-        InputPassthrough result = handler(focus, client);
+        InputPassthrough result = handler(focus);
 
         if (result == InputPassthrough::Consume)
             return InputPassthrough::Consume;
