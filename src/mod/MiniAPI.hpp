@@ -12,7 +12,6 @@
 #include "mc/deps/input/InputMode.h"
 #include "mc/client/options/BaseOptions.h"
 #include "mc/client/input/RemappingLayout.h"
-
 #include "mc/client/game/ClientInstance.h"
 
 #include "Event/input.hpp"
@@ -22,7 +21,6 @@ namespace alvinqid {
 class MiniAPI {
 
 public:
-
     static MiniAPI& getInstance();
 
     MiniAPI() : mSelf(*ll::mod::NativeMod::current()) {}
@@ -32,16 +30,17 @@ public:
     bool load();
     bool enable();
     bool disable();
-    //bool unload();
+
+    void setClientInstance(ClientInstance* ci) { clientInstance = ci; }
+    void setRMPL(RemappingLayout* r) { rmpl = r; }
+
+    ClientInstance* getClientInstance() { return clientInstance; }
+    RemappingLayout* getRMPL() { return rmpl; }
 
 private:
     ll::mod::NativeMod& mSelf;
-    ClientInstance* clientInstance;
-    RemappingLayout* rmpl;
+    ClientInstance* clientInstance = nullptr;
+    RemappingLayout* rmpl = nullptr;
 };
-
-public:
-    void setClientInstance(ClientInstance* ci) { clientInstance = ci; }
-    void setRMPL(RemappingLayout* r) { rmpl = r; }
 
 } // namespace alvinqid
