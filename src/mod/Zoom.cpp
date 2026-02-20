@@ -31,7 +31,7 @@ namespace alvinqid {
         float,
         InputMode inputMode
     ) {
-        float currentSensitivityorigin(inputMode);
+        float currentSensitivity = origin(inputMode);
         float dampen = (100.0f - 90.0f) / 100.0f;
         float targetSensitivity = currentSensitivity * dampen;
         
