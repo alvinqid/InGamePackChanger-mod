@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <string>
 
-#include "input/InputAction.hpp"
+#include "mod/InputAction.hpp"
 
 #include "mc/client/options/Options.h"
 #include "mc/deps/input/InputHandler.h"
