@@ -19,7 +19,7 @@
 
 class InputManager {
 public:
-    InputManager(alvinqid::Zoom zoom);
+    InputManager(alvinqid::Zoom* zoom);
 
     InputManager(const InputManager&) = delete;
     InputManager(InputManager&&) = delete;

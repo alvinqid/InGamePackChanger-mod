@@ -10,12 +10,12 @@ namespace alvinqid {
         InputAction& zoomKeybind =
             inputManager.registerNewInput("zoom", {'C'}, true, KeybindContext::Gameplay);
     
-        zoomKeybind.addButtonDownHandler([](FocusImpact focus, ClientInstance& client) {
+        zoomKeybind.addButtonDownHandler([](FocusImpact focus) {
             setEnabled(true);
             return InputPassthrough::Consume;
         });
     
-        zoomKeybind.addButtonUpHandler([](FocusImpact focus, ClientInstance& client) {
+        zoomKeybind.addButtonUpHandler([](FocusImpact focus) {
             setEnabled(false);
             return InputPassthrough::Consume;
         });

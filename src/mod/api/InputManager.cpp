@@ -18,10 +18,10 @@ InputAction& InputManager::registerNewInput(
     if (auto it = mActions.find(hash); it != mActions.end())
         return *it->second;
 
-    auto layout = mMod->getInstance().getOptions()->getCurrentKeyboardRemapping();
+    auto layout = mMod->getInstance().getOptions()->getCurrentKeyboardRemapping().get();
 
     Keymapping keymapping("key." + actionName, defaultKeys);
-    keymapping->mAllowRemap = allowRemapping;
+    keymapping.mAllowRemap = allowRemapping;
     layout->mKeymappings.emplace_back(keymapping);
     layout->mDefaultMappings.emplace_back(keymapping);
 
@@ -65,8 +65,7 @@ InputPassthrough InputManager::_handleButtonEvent(
     const InputAction& action = *it->second;
     return action._onButtonStateChange(
         button.state,
-        focus,
-        client.asInstance()
+        focus
     );
 }
 

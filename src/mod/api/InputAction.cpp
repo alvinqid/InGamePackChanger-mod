@@ -31,19 +31,18 @@ void InputAction::addButtonUpHandler(
 
 InputPassthrough InputAction::_onButtonStateChange(
     ButtonState state,
-    FocusImpact focus,
-    ClientInstance& client) const
+    FocusImpact focus) const
 {
     const auto& handlers =
         (state == ButtonState::Down) ? mButtonDownHandlers :
         (state == ButtonState::Up)   ? mButtonUpHandlers   :
-                                       std::vector<std::function<InputPassthrough(FocusImpact, ClientInstance&)>>{};
+                                       std::vector<std::function<InputPassthrough(FocusImpact)>>{};
 
     bool passToVanilla = true;
 
     for (const auto& handler : handlers)
     {
-        const InputPassthrough result = handler(focus, client);
+        const InputPassthrough result = handler(focus);
 
         if (result == InputPassthrough::Consume)
             return InputPassthrough::Consume;
