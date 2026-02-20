@@ -5,6 +5,7 @@
 #include <map>
 
 #include "input/InputAction.hpp"
+#include "mc/client/game/ClientInstance.h"
 #include "mc/client/game/IClientInstance.h"
 #include "mc/client/options/Options.h"
 #include "mc/deps/input/InputHandler.h"

@@ -4,6 +4,8 @@
 #include <functional>
 #include "mc/deps/input/InputHandler.h"
 #include "mc/client/game/IClientInstance.h"
+#include "mc/client/game/ClientInstance.h"
+#include "mc/deps/input/enums/FocusImpact.h"
 
 int32_t StringToNameId(const std::string& str);
 
