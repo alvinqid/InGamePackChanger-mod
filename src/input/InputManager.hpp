@@ -13,7 +13,7 @@
 #include "mc/deps/input/MouseInputMapping.h"
 #include "mc/client/input/Keymapping.h"
 #include "mc/client/input/ClientInputHandler.h"
-#include "mc/client/input/VanillaClientInputMappingFactory.hpp"
+#include "mc/client/input/VanillaClientInputMappingFactory.h"
 
 namespace Amethyst {
 class InputManager {
