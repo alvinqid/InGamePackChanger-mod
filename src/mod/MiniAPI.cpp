@@ -1,5 +1,7 @@
 #include "mod/MiniAPI.hpp"
 
+#include "features/zoom.hpp"
+
 namespace alvinqid {
 
 MiniAPI& MiniAPI::getInstance() {
@@ -38,7 +40,8 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 ) {
     void* self = origin();
 
-    rmpl = reinterpret_cast<RemappingLayout*>(self);
+    MiniAPI::getInstance().getRMPL() =
+        reinterpret_cast<RemappingLayout*>(self);
 
     return self;
 }
@@ -53,7 +56,8 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 ) {
     void* self = origin(args);
 
-    clientInstance = reinterpret_cast<ClientInstance*>(self);
+    MiniAPI::getInstance().getClientInstance() =
+        reinterpret_cast<ClientInstance*>(self);
 
     return self;
 }
@@ -68,8 +72,15 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 ) {
     origin(opts);
 
-    if (clientInstance != nullptr) {
-        Amethyst::InputManager inputMgr(clientInstance->getOptionsPtr().get(), rmpl)
+    auto& api = MiniAPI::getInstance();
+    auto clientInstance = api.getClientInstance();
+    auto rmpl = api.getRMPL();
+
+    if (clientInstance && rmpl) {
+        Amethyst::InputManager inputMgr(
+            clientInstance->getOptionsPtr().get()
+        );
+
         EventInput(inputMgr);
     }
 }

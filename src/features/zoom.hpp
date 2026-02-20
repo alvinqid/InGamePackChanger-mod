@@ -1,3 +1,5 @@
+#pragma once
+
 #include <chrono>
 
 void setEnabled(bool state);

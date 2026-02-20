@@ -22,9 +22,6 @@ namespace alvinqid {
 class MiniAPI {
 
 public:
-    ClientInstance* getClientInstance() { return clientInstance; }
-    
-    RemappingLayout* getRMPL() { return rmpl; }
 
     static MiniAPI& getInstance();
 
@@ -42,5 +39,9 @@ private:
     ClientInstance* clientInstance;
     RemappingLayout* rmpl;
 };
+
+public:
+    void setClientInstance(ClientInstance* ci) { clientInstance = ci; }
+    void setRMPL(RemappingLayout* r) { rmpl = r; }
 
 } // namespace alvinqid
