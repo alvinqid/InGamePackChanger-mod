@@ -16,12 +16,12 @@
 
 namespace alvinqid {
 
-class MiniAPI {
+class MiniAPIMOD {
 
 public:
-    static MiniAPI& getInstance();
+    static MiniAPIMOD& getInstance();
 
-    MiniAPI() : mSelf(*ll::mod::NativeMod::current()) {}
+    MiniAPIMOD() : mSelf(*ll::mod::NativeMod::current()) {}
 
     [[nodiscard]] ll::mod::NativeMod& getSelf() const { return mSelf; }
 

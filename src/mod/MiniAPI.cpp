@@ -2,8 +2,8 @@
 
 namespace alvinqid {
 
-MiniAPI& MiniAPI::getInstance() {
-    static MiniAPI instance;
+MiniAPIMOD& MiniAPIMOD::getInstance() {
+    static MiniAPIMOD instance;
     return instance;
 }
 
@@ -22,7 +22,7 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
     BaseOptionsSensi,
     HookPriority::Normal,
     BaseOptions,
-    &BaseOptions::$ctor,
+    &BaseOptions::$getSensitivity,
     float,
     InputMode inputMode
 ) {
@@ -61,21 +61,21 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
     return self;
 }
 
-bool MiniAPI::load() {
+bool MiniAPIMOD::load() {
     getSelf().getLogger().debug("Loading...");
     return true;
 }
 
-bool MiniAPI::enable() {
+bool MiniAPIMOD::enable() {
     getSelf().getLogger().debug("Enabling...");
     return true;
 }
 
-bool MiniAPI::disable() {
+bool MiniAPIMOD::disable() {
     getSelf().getLogger().debug("Disabling...");
     return true;
 }
 
 } // namespace alvinqid
 
-LL_REGISTER_MOD(alvinqid::MiniAPI, alvinqid::MiniAPI::getInstance());
+LL_REGISTER_MOD(alvinqid::MiniAPIMOD, alvinqid::MiniAPIMOD::getInstance());
